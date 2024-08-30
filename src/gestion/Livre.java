@@ -13,8 +13,7 @@ public class Livre extends document{
 		
 	}
 
-	
-	
+	 
 	@Override
 	public void afficherDetails() {
 		System.out.println("-------------------------------------------------------");
