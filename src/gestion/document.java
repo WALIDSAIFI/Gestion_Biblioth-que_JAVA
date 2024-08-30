@@ -1,13 +1,15 @@
 package gestion;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public abstract class document {
 	
 	protected int id;
 	protected String titre;
-	protected Date Date;
+	protected String  dateDePublication;
 	protected int nombreDePages;
 	protected boolean  etat;
 	/**
@@ -18,7 +20,8 @@ public abstract class document {
 	 */
 	
 	public document(String titre,int nombreDePages){
-		this.Date = new Date();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.dateDePublication = LocalDate.now().format(formatter);
 		this.titre = titre;
 		this.nombreDePages = nombreDePages;	
 		long seed = System.currentTimeMillis();
@@ -45,7 +48,7 @@ public abstract class document {
 	protected void afficherDetails() {
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Titre : "+ this.titre + "\n");
-		System.out.println("Date de publication : "+ this.Date + "\n");
+		System.out.println("Date de publication : "+ this.dateDePublication + "\n");
 		System.out.println("Nombre des page : "+ this.nombreDePages+ "\n");
 		if(etat == false) {
 			System.out.println("Ce document n'est pas emprunté. \n");
@@ -64,8 +67,8 @@ public abstract class document {
 		  return titre;
 	 }
 	 
-	 protected  SimpleDateFormat getDatepublication() {
-		 return Date;
+	 protected  String  getDatepublication() {
+		 return dateDePublication;
 	 }
 	
 	 protected int getNombreDePages() {
