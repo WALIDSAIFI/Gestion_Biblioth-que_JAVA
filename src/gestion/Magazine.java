@@ -1,8 +1,8 @@
 package gestion;
 
 public class Magazine extends document {
-
-	public Magazine(String titre, int nombreDePages) {
+         private int  numero;
+	public Magazine(String titre, int nombreDePages,int numero) {
 		super(titre, nombreDePages);
 		
 	}
