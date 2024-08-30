@@ -17,6 +17,8 @@ public abstract class document {
 	 *
 	 * @param titre Le titre du document.
 	 * @param nombreDePages Le nombre de pages du document.
+	 * 
+	 * 
 	 */
 	
 	public document(String titre,int nombreDePages){
@@ -24,13 +26,13 @@ public abstract class document {
         this.dateDePublication = LocalDate.now().format(formatter);
 		this.titre = titre;
 		this.nombreDePages = nombreDePages;	
-		long seed = System.currentTimeMillis();
-		Random  ran = new Random(seed);
+		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
 	}
 	/*
 	 * la méthode pour emprunter un document
+	 * 
 	 * 
 	 * */
 	
