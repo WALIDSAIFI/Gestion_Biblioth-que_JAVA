@@ -1,9 +1,13 @@
 package gestion;
 
-public class main {
-	
-	public  static  void main (String [] args) {
-		
-	}
+public class Main {
+
+    public static void main(String[] args) {
+        
+        Livre livre = new Livre("test", 20);
+        
+        livre.afficherDetails();
+        
+    }
 
 }
