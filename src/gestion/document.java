@@ -7,7 +7,7 @@ public abstract class document {
 	
 	protected int id;
 	protected String titre;
-	protected SimpleDateFormat Date;
+	protected Date Date;
 	protected int nombreDePages;
 	protected boolean  etat;
 	/**
@@ -18,7 +18,7 @@ public abstract class document {
 	 */
 	
 	public document(String titre,int nombreDePages){
-		this.Date = new SimpleDateFormat("dd/MM/yyyy");
+		this.Date = new Date();
 		this.titre = titre;
 		this.nombreDePages = nombreDePages;	
 		long seed = System.currentTimeMillis();
