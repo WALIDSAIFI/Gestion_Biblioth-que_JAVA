@@ -20,7 +20,7 @@ public class Livre extends document{
 		System.out.println("-------------------------------------------------------");
 		System.out.println("ISBN: "+ this.isbn + "\n");
 		System.out.println("Titre : "+ this.titre + "\n");
-		System.out.println("Date de publication : "+ this.Date + "\n");
+		System.out.println("Date de publication : "+ this.dateDePublication + "\n");
 		System.out.println("Nombre des page : "+ this.nombreDePages+ "\n");
 		if(etat == false) {
 			System.out.println("Ce document n'est pas emprunté. \n");
