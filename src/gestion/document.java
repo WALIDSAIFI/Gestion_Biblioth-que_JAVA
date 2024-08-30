@@ -10,7 +10,12 @@ public abstract class document {
 	protected SimpleDateFormat Date;
 	protected int nombreDePages;
 	protected boolean  etat;
-	
+	/**
+	 * Constructeur de la classe Document.
+	 *
+	 * @param titre Le titre du document.
+	 * @param nombreDePages Le nombre de pages du document.
+	 */
 	
 	public document(String titre,int nombreDePages){
 		this.Date = new SimpleDateFormat("dd/MM/yyyy");
@@ -21,11 +26,18 @@ public abstract class document {
 		this.id=ran.nextInt();
 		this.etat = false;
 	}
-	
+	/*
+	 * la méthode pour emprunter un document
+	 * 
+	 * */
 	
 	protected void emprunter() {
 		 this.etat = true;	 
 	}
+	/*
+	 *la méthode pour retourner un document
+	 * 
+	 * */
 	protected void retourner() {
 		this.etat = false;
 	}
@@ -42,8 +54,38 @@ public abstract class document {
 		}
 		System.out.println("--------------------------------------------------------");
 	}
+	/*les getters de class document */
 	
+	 protected int getId() {
+		  return id;
+	 }
+	 
+	 protected String getTitre() {
+		  return titre;
+	 }
+	 
+	 protected  SimpleDateFormat getDatepublication() {
+		 return Date;
+	 }
 	
+	 protected int getNombreDePages() {
+		 return nombreDePages;
+	 }
+	 
+	 /* les Setters de class document*/
+	 
+	 protected void setTitre(String titre) {
+		 if(!titre.isEmpty()) {
+		 this.titre = titre;
+		 }
+	 }
+	 
+	 protected void setnombreDePages(int nombre) {
+		 if(nombre>0) {
+			 this.nombreDePages = nombre;
+		 }
+	 }
+	 
 	
 
 
