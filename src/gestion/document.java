@@ -12,6 +12,7 @@ public abstract class document {
 	protected String  dateDePublication;
 	protected int nombreDePages;
 	protected boolean  etat;
+	
 	/**
 	 * Constructeur de la classe Document.
 	 *
