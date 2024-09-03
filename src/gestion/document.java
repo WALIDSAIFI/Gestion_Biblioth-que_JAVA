@@ -13,13 +13,6 @@ public abstract class document {
 	protected int nombreDePages;
 	protected boolean  etat;
 
-
-
-
-
-
-	
-
 	
 	/**
 	 * Constructeur de la classe Document.
