@@ -1,10 +1,13 @@
 package gestion;
 import java.util.*;
+import java.time.LocalDate;
+
+
 public class Livre extends document{
 	
 	private String isbn;
 
-	public Livre(String titre, int nombreDePagesnDate ,Date DatePublication,String isbn) {
+	public Livre(String titre, int nombreDePagesnDate ,LocalDate DatePublication,String isbn) {
 		super(titre, nombreDePagesnDate,DatePublication);
 		this.isbn = isbn;
 		

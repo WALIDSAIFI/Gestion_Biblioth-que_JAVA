@@ -1,5 +1,7 @@
 package gestion;
 import java.util.*;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 public class console {
   
 	private Bibliotheque bibliotheque;
@@ -41,24 +43,36 @@ public class console {
 
 	public void ajouterDocument(){
 		System.out.println("");
-		System.out.print("Type de document (livre/magazine) : ");
+		System.out.println("Type de document (livre/magazine) : ");
 		String type = scanner.nextLine();
-		System.out.print("ID : ");
+		System.out.println("ID : ");
         String id = scanner.nextLine();
-        System.out.print("Titre : ");
+        System.out.println("Titre : ");
         String titre = scanner.nextLine();
-        System.out.print("Auteur : ");
+        System.out.println("Auteur : ");
         String auteur = scanner.nextLine();
-        System.out.print("Date de publication (YYYY-MM-DD) : ");
-         
-        System.out.print("Nombre de pages : ");
-        int nombreDePages = scanner.nextInt();
-        scanner.nextLine();
-		System.out.println("Entre la date de publication");
-		String date =scanner.nextLine();
-		if(type.equals("livre")){
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Date de publication JJ/MM/AAAA: ");
 
-			
+		String dateInput = scanner.nextLine();
+
+        LocalDate date = LocalDate.parse(dateInput, formatter);
+	
+        
+        System.out.print("Nombre de pages : ");
+        
+		int nombreDePages = scanner.nextInt();	
+
+		if(type.equals("livre")){
+			System.err.println("ISBN :");
+			String isbn = scanner.nextLine();
+			Livre livre =new Livre(titre, nombreDePages, date, isbn);
+			bibliotheque.ajouterDocument(livre);
+		}else if(type.equals("magazine")){
+			System.out.print("Numéro : ");
+            int numero = scanner.nextInt();
+
+			Magazine magazine = new Magazine(titre, nombreDePages, date, numero);
 		}
 	}
 

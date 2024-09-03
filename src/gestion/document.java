@@ -29,6 +29,7 @@ public abstract class document {
 		SetTitre(titre);
 		SetnombreDePages(nombreDePages);
 		SetDatepublication(dateDePublication);
+
 		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
@@ -107,7 +108,7 @@ public abstract class document {
 	
 			try {
 				Datepublication = LocalDate.parse(input, formatter);
-				validDate = true;  // Sort de la boucle si la date est valide
+				validDate = true;  
 			} catch (DateTimeParseException e) {
 				System.out.println("Format de date invalide. Veuillez réessayer.");
 			}
