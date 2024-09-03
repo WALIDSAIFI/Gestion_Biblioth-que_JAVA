@@ -25,12 +25,13 @@ public abstract class document {
 	
 	public document(String titre,int nombreDePages,Date dateDePublication){
 	    
-		this.titre = titre;
-		this.nombreDePages = nombreDePages;	
+		setTitre(titre);
+		setnombreDePages(nombreDePages);
 		this.dateDePublication = dateDePublication;
 		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
+		
 	}
 	/*
 	 * la méthode pour emprunter un document
@@ -70,15 +71,29 @@ public abstract class document {
 	 /* les Setters de class document*/
 	 
 	 protected void setTitre(String titre) {
-		 if(!titre.isEmpty()) {
-		 this.titre = titre;
-		 }
-	 }
+		Scanner scanner = new Scanner(System.in);
+	
+		while (titre.isEmpty()) {
+			System.out.print("Veuillez entrer un titre valider !!!!: ");
+			titre = scanner.nextLine();
+	
+		}
+	
+		this.titre = titre;
+	}
 	 
 	 protected void setnombreDePages(int nombre) {
-		 if(nombre>0) {
-			 this.nombreDePages = nombre;
+		Scanner scanner = new Scanner(System.in);
+
+		 while (nombre<0) {
+			if(nombre<=0){
+				System.out.print("Le nombre de pages doit être supérieur à 0. Veuillez essayer à nouveau :  ");
+				nombre = scanner.nextInt();
+			}
+			
+
 		 }
+		 this.nombreDePages = nombre;
 	 }
 	 
 	

@@ -39,4 +39,26 @@ public class console {
 	
 	}
 
+	public void ajouterDocument(){
+		System.out.println("");
+		System.out.print("Type de document (livre/magazine) : ");
+		String type = scanner.nextLine();
+		System.out.print("ID : ");
+        String id = scanner.nextLine();
+        System.out.print("Titre : ");
+        String titre = scanner.nextLine();
+        System.out.print("Auteur : ");
+        String auteur = scanner.nextLine();
+        System.out.print("Date de publication (YYYY-MM-DD) : ");
+        LocalDate datePublication = DateUtils.parseDate(scanner.nextLine());
+        System.out.print("Nombre de pages : ");
+        int nombreDePages = scanner.nextInt();
+        scanner.nextLine();
+
+		if(type.equals("livre")){
+
+			
+		}
+	}
+
 }
