@@ -10,10 +10,6 @@ public class Livre extends document{
 		
 	}
 
-	
-
-	
-	
 	 
 	@Override
 	public void afficherDetails() {
@@ -24,9 +20,9 @@ public class Livre extends document{
 		System.out.println("Date de publication : "+ this.dateDePublication + "\n");
 		System.out.println("Nombre des page : "+ this.nombreDePages+ "\n");
 		if(etat == false) {
-			System.out.println("Ce document n'est pas emprunté. \n");
+			System.out.println("Ce Livre n'est pas emprunté. \n");
 		}else{
-			System.out.println("Ce document est  emprunté.\n");
+			System.out.println("Ce Livre est  emprunté.\n");
 		}
 		System.out.println("--------------------------------------------------------");
 	}
