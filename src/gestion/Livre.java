@@ -6,10 +6,12 @@ import java.time.LocalDate;
 public class Livre extends document{
 	
 	private String isbn;
+	private String auteur;
 
-	public Livre(String titre, int nombreDePagesnDate ,LocalDate DatePublication,String isbn) {
+	public Livre(String titre, int nombreDePagesnDate ,LocalDate DatePublication,String isbn,String auteur) {
 		super(titre, nombreDePagesnDate,DatePublication);
 		this.isbn = isbn;
+		this.auteur=auteur;
 		
 	}
 

@@ -2,6 +2,7 @@ package gestion;
 import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+
 public class console {
   
 	private Bibliotheque bibliotheque;
@@ -25,14 +26,27 @@ public class console {
 			int choix = scanner.nextInt();
 
 			switch (choix) {
-				case 1:
-					
-					break;
-
-			
-				default:
-					break;
-			}
+                case 1:
+                    ajouterDocument();
+                    break;
+                case 2:
+                    emprunterDocument();
+                    break;
+                case 3:
+                    retournerDocument();
+                    break;
+                case 4:
+                    bibliotheque.afficherDocuments();
+                    break;
+                case 5:
+                    rechercherDocument();
+                    break;
+                case 6:
+                    System.out.println("Au revoir!");
+                    return;
+                default:
+                    System.out.println("Choix invalide.");
+            }
 
 
 
@@ -45,8 +59,7 @@ public class console {
 		System.out.println("");
 		System.out.println("Type de document (livre/magazine) : ");
 		String type = scanner.nextLine();
-		System.out.println("ID : ");
-        String id = scanner.nextLine();
+		
         System.out.println("Titre : ");
         String titre = scanner.nextLine();
         System.out.println("Auteur : ");
@@ -66,14 +79,37 @@ public class console {
 		if(type.equals("livre")){
 			System.err.println("ISBN :");
 			String isbn = scanner.nextLine();
-			Livre livre =new Livre(titre, nombreDePages, date, isbn);
+			Livre livre =new Livre(titre, nombreDePages, date, isbn,auteur);
 			bibliotheque.ajouterDocument(livre);
 		}else if(type.equals("magazine")){
 			System.out.print("Numéro : ");
             int numero = scanner.nextInt();
 
 			Magazine magazine = new Magazine(titre, nombreDePages, date, numero);
+
+			bibliotheque.ajouterDocument(magazine);
 		}
 	}
+
+
+	private void emprunterDocument() {
+		Scanner scanner = new Scanner(System.in);
+        System.out.print("ID du document à emprunter : ");
+        int  id = scanner.nextInt();
+
+        bibliotheque.emprunterDocumment(id);
+    }
+
+    private void retournerDocument() {
+        System.out.print("ID du document à retourner : ");
+        String id = scanner.nextLine();
+        bibliotheque.retournerDocument(id);
+    }
+
+    private void rechercherDocument() {
+        System.out.print("ID du document à rechercher : ");
+        String id = scanner.nextLine();
+        bibliotheque.rechercherDocument(id);
+    }
 
 }
