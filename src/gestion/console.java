@@ -50,11 +50,12 @@ public class console {
         System.out.print("Auteur : ");
         String auteur = scanner.nextLine();
         System.out.print("Date de publication (YYYY-MM-DD) : ");
-        LocalDate datePublication = DateUtils.parseDate(scanner.nextLine());
+         
         System.out.print("Nombre de pages : ");
         int nombreDePages = scanner.nextInt();
         scanner.nextLine();
-
+		System.out.println("Entre la date de publication");
+		String date =scanner.nextLine();
 		if(type.equals("livre")){
 
 			

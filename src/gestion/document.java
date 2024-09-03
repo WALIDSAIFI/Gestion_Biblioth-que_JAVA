@@ -9,7 +9,7 @@ public abstract class document {
 	
 	protected int id;
 	protected String titre;
-	protected Date dateDePublication;
+	protected LocalDate dateDePublication;
 	protected int nombreDePages;
 	protected boolean  etat;
 
@@ -23,11 +23,11 @@ public abstract class document {
 	 * 
 	 */
 	
-	public document(String titre,int nombreDePages,Date dateDePublication){
+	public document(String titre,int nombreDePages,LocalDate dateDePublication){
 	    
-		setTitre(titre);
-		setnombreDePages(nombreDePages);
-		this.dateDePublication = dateDePublication;
+		SetTitre(titre);
+		SetnombreDePages(nombreDePages);
+		SetDatepublication(dateDePublication);
 		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
@@ -70,7 +70,7 @@ public abstract class document {
 	 
 	 /* les Setters de class document*/
 	 
-	 protected void setTitre(String titre) {
+	 protected void SetTitre(String titre) {
 		Scanner scanner = new Scanner(System.in);
 	
 		while (titre.isEmpty()) {
@@ -82,20 +82,36 @@ public abstract class document {
 		this.titre = titre;
 	}
 	 
-	 protected void setnombreDePages(int nombre) {
+	 protected void SetnombreDePages(int nombre) {
 		Scanner scanner = new Scanner(System.in);
 
 		 while (nombre<0) {
 			if(nombre<=0){
-				System.out.print("Le nombre de pages doit être supérieur à 0. Veuillez essayer à nouveau :  ");
+				System.out.print("Le nombre de pages doit être supérieur à 0. Veuillez essayer à nouveau : ");
 				nombre = scanner.nextInt();
 			}
-			
 
 		 }
 		 this.nombreDePages = nombre;
 	 }
-	 
+
+	
+           
+      
+	 protected void SetDatepublication(LocalDate Datepublication) {
+		Scanner scanner = new Scanner(System.in);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		boolean validDate = false;
+		
+		while (!validDate) {
+			System.out.print("Entrez la date de publication (jj/MM/aaaa) : ");
+			String input = scanner.nextLine();
+			   Datepublication = LocalDate.parse(input, formatter);
+				validDate = true;
+		}
+	
+		this.dateDePublication =  Datepublication;
+	}
 	
 
 
