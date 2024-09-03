@@ -12,6 +12,14 @@ public abstract class document {
 	protected Date dateDePublication;
 	protected int nombreDePages;
 	protected boolean  etat;
+
+
+
+
+
+
+	
+
 	
 	/**
 	 * Constructeur de la classe Document.
