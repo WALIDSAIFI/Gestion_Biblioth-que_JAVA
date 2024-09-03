@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.time.format.DateTimeParseException;
 
 public abstract class document {
 	
@@ -95,23 +96,26 @@ public abstract class document {
 		 this.nombreDePages = nombre;
 	 }
 
-	
-           
-      
 	 protected void SetDatepublication(LocalDate Datepublication) {
 		Scanner scanner = new Scanner(System.in);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		boolean validDate = false;
-		
+	
 		while (!validDate) {
 			System.out.print("Entrez la date de publication (jj/MM/aaaa) : ");
 			String input = scanner.nextLine();
-			   Datepublication = LocalDate.parse(input, formatter);
-				validDate = true;
+	
+			try {
+				Datepublication = LocalDate.parse(input, formatter);
+				validDate = true;  // Sort de la boucle si la date est valide
+			} catch (DateTimeParseException e) {
+				System.out.println("Format de date invalide. Veuillez réessayer.");
+			}
 		}
 	
-		this.dateDePublication =  Datepublication;
+		this.dateDePublication = Datepublication;
 	}
+	
 	
 
 
