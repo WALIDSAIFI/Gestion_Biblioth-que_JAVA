@@ -1,18 +1,24 @@
 package gestion;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Livre extends document{
 	
 	private String isbn;
 
-	public Livre(String titre, int nombreDePages) {
-		super(titre, nombreDePages);
+	public Livre(String titre, int nombreDePagesnDate ,Date DatePublication) {
+		super(titre, nombreDePagesnDate,DatePublication);
 		Random  ran = new Random();
 		this.isbn = titre+ran.nextInt(100);
 		
 	}
 
+	
+	
+	
+	
+	
 	 
 	@Override
 	public void afficherDetails() {

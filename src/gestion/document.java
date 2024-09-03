@@ -9,7 +9,7 @@ public abstract class document {
 	
 	protected int id;
 	protected String titre;
-	protected String  dateDePublication;
+	protected Date dateDePublication;
 	protected int nombreDePages;
 	protected boolean  etat;
 	
@@ -22,11 +22,11 @@ public abstract class document {
 	 * 
 	 */
 	
-	public document(String titre,int nombreDePages){
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.dateDePublication = LocalDate.now().format(formatter);
+	public document(String titre,int nombreDePages,Date dateDePublication){
+	    
 		this.titre = titre;
 		this.nombreDePages = nombreDePages;	
+		this.dateDePublication = dateDePublication;
 		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
@@ -49,16 +49,7 @@ public abstract class document {
 	}
 	
 	protected void afficherDetails() {
-		System.out.println("-------------------------------------------------------");
-		System.out.println("Titre : "+ this.titre + "\n");
-		System.out.println("Date de publication : "+ this.dateDePublication + "\n");
-		System.out.println("Nombre des page : "+ this.nombreDePages+ "\n");
-		if(etat == false) {
-			System.out.println("Ce document n'est pas emprunté. \n");
-		}else{
-			System.out.println("Ce document est  emprunté.\n");
-		}
-		System.out.println("--------------------------------------------------------");
+		
 	}
 	/*les getters de class document */
 	
@@ -70,10 +61,7 @@ public abstract class document {
 		  return titre;
 	 }
 	 
-	 protected  String  getDatepublication() {
-		 return dateDePublication;
-	 }
-	
+
 	 protected int getNombreDePages() {
 		 return nombreDePages;
 	 }
