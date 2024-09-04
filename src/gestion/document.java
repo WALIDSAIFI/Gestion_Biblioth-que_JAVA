@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException;
 public abstract class document {
 	
 	protected int id;
+	protected String auteur;
 	protected String titre;
 	protected LocalDate dateDePublication;
 	protected int nombreDePages;
@@ -24,12 +25,12 @@ public abstract class document {
 	 * 
 	 */
 	
-	public document(String titre,int nombreDePages,LocalDate dateDePublication){
+	public document(String auteur,String titre,int nombreDePages,LocalDate dateDePublication,boolean etat){
 	    
-		SetTitre(titre);
-		SetnombreDePages(nombreDePages);
-		SetDatepublication(dateDePublication);
-
+		this.auteur=auteur;
+		this.titre=titre;
+		this.nombreDePages = nombreDePages;
+		this.dateDePublication = dateDePublication;
 		Random  ran = new Random(1000);
 		this.id=ran.nextInt();
 		this.etat = false;
@@ -41,20 +42,18 @@ public abstract class document {
 	 * 
 	 * */
 	
-	protected void emprunter() {
-		 this.etat = true;	 
-	}
+	public abstract void emprunter();
+
 	/*
 	 *la méthode pour retourner un document
 	 * 
 	 * */
-	protected void retourner() {
-		this.etat = false;
-	}
+	public abstract void  retourner();
 	
-	protected void afficherDetails() {
-		
-	}
+	
+	public abstract void afficherDetails();
+
+
 	/*les getters de class document */
 	
 	 protected int getId() {
@@ -85,6 +84,9 @@ public abstract class document {
 	 protected void SetDatepublication(LocalDate Datepublication) {
 	
 		this.dateDePublication = Datepublication;
+	}
+	protected void SetAuteur(String auteur){
+		this.auteur = auteur;
 	}
 	
 	

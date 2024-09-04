@@ -7,16 +7,18 @@ import java.time.format.DateTimeParseException;
 public class console {
   
 	private Bibliotheque bibliotheque;
-	private Scanner scanner;
+
 
 	public console(){
     this.bibliotheque = new Bibliotheque();
-	this.scanner = new Scanner(System.in);
 	}
 	
 	public void  afficherMenu() {
 
 		while (true) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("-------------------------------------------------------");
+			System.out.println("-------------------------------------------------------");
 			System.out.println("1-Ajouter un document\n");
 			System.out.println("2-Emprunter un document\n");
 			System.out.println("3-Retourner un document\n");
@@ -37,7 +39,7 @@ public class console {
                     retournerDocument();
                     break;
                 case 4:
-                     afficherMenu();
+                     afficherDetailsDocument();
                     break;
                 case 5:
                     rechercherDocument();
@@ -57,21 +59,26 @@ public class console {
 	public void ajouterDocument() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("");
-		System.out.println("Type de document (1-livre/2-magazine) : ");
+		System.out.println("Type de document (1-livre / 2-magazine) : ");
 		int type = scanner.nextInt();
 	
 		if (type == 1 || type == 2) {
-
-			System.out.println("Titre : ");
-			String titre = scanner.nextLine();
-
+	
+			scanner.nextLine();
 			System.out.println("Auteur : ");
 			String auteur = scanner.nextLine();
 	
+			
+			System.out.println("Titre : ");
+			String titre = scanner.nextLine();
+
+			
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			LocalDate date = null;
 	
 			while (date == null) {
+				
+
 				System.out.println("Date de publication (JJ/MM/AAAA) : ");
 				String dateInput = scanner.nextLine();
 	
@@ -81,6 +88,8 @@ public class console {
 					System.out.println("Format de date invalide. Veuillez entrer une date au format JJ/MM/AAAA.");
 				}
 			}
+
+		
 	
 			System.out.print("Nombre de pages : ");
 			int nombreDePages = scanner.nextInt();
@@ -89,14 +98,14 @@ public class console {
 			if (type == 1) {
 				System.out.println("ISBN :");
 				String isbn = scanner.nextLine();
-				Livre livre = new Livre(titre, nombreDePages, date, isbn, auteur);
+				Livre livre = new Livre(auteur, titre, nombreDePages, date, false, isbn);
 				bibliotheque.ajouterDocument(livre);
 			} else if (type == 2) {
 				System.out.print("Numéro : ");
 				int numero = scanner.nextInt();
 				scanner.nextLine(); 
 	
-				Magazine magazine = new Magazine(titre, nombreDePages, date, numero);
+				Magazine magazine = new Magazine(auteur, titre, nombreDePages, date, false, numero);
 				bibliotheque.ajouterDocument(magazine);
 			}
 		} else {
@@ -115,12 +124,14 @@ public class console {
     }
 
     private void retournerDocument() {
+		Scanner scanner = new Scanner(System.in);
         System.out.print("ID du document à retourner : ");
         String id = scanner.nextLine();
         bibliotheque.retournerDocument(id);
     }
 
     private void rechercherDocument() {
+		Scanner scanner = new Scanner(System.in);
         System.out.print("ID du document à rechercher : ");
         String id = scanner.nextLine();
         bibliotheque.rechercherDocument(id);
