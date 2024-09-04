@@ -16,7 +16,7 @@ public class Livre extends document{
 	public void afficherDetails() {
 		System.out.println("-------------------------------------------------------");
 		System.out.println("-------------------------Livre-------------------------");
-		System.out.println("ID: " + this.getId()); 
+		System.out.println("ID: " + this.id); 
 		System.out.println("ISBN: "+ this.isbn + "\n");
 		System.out.println("Titre : "+ this.titre + "\n");
 		System.out.println("Date de publication : "+ this.dateDePublication + "\n");

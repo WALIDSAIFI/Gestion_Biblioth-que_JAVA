@@ -1,6 +1,7 @@
 package gestion;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -8,7 +9,7 @@ import java.time.format.DateTimeParseException;
 
 public abstract class document {
 	
-	protected int id;
+	protected String id;
 	protected String auteur;
 	protected String titre;
 	protected LocalDate dateDePublication;
@@ -31,8 +32,8 @@ public abstract class document {
 		this.titre=titre;
 		this.nombreDePages = nombreDePages;
 		this.dateDePublication = dateDePublication;
-		Random  ran = new Random(1000);
-		this.id=ran.nextInt();
+
+		this.id = String.valueOf(Instant.now().getEpochSecond());
 		this.etat = false;
 		
 	}
@@ -56,7 +57,7 @@ public abstract class document {
 
 	/*les getters de class document */
 	
-	 protected int getId() {
+	 protected String getId() {
 		  return id;
 	 }
 	 

@@ -17,7 +17,8 @@ public class Bibliotheque {
        this.documents.add(Doc);
        this.documentMap.put(Doc.titre,Doc);
     }
-    public void emprunterDocumment(int id){
+    public void emprunterDocumment(String id){
+       
         document Document =documentMap.get(id);
         if(Document !=null){
             Document.emprunter();
@@ -27,7 +28,9 @@ public class Bibliotheque {
 
     }
 
-    public void retournerDocument(String id){
+    public void retournerDocument(String  id){
+      
+        
         document Document = documentMap.get(id);
         if(Document != null){
             Document.retourner();

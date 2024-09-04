@@ -20,6 +20,7 @@ public class Magazine extends document {
     public void afficherDetails() {
         System.out.println("--------------------------------------------------------");
         System.out.println("-------------------------Magazine------------------------");
+		System.out.println("ID : " + this.id + "\n");
         System.out.println("Titre : " + this.titre + "\n");
         System.out.println("Auteur : " + this.auteur + "\n");
         System.out.println("Date de publication : " + this.dateDePublication + "\n");
