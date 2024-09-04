@@ -8,8 +8,10 @@ import java.util.*;
 import java.time.format.DateTimeParseException;
 
 public abstract class document {
+
+	private static int idCounter = 1;
 	
-	protected String id;
+	protected int id =1;
 	protected String auteur;
 	protected String titre;
 	protected LocalDate dateDePublication;
@@ -33,7 +35,7 @@ public abstract class document {
 		this.nombreDePages = nombreDePages;
 		this.dateDePublication = dateDePublication;
 
-		this.id = String.valueOf(Instant.now().getEpochSecond());
+		this.id= idCounter++;
 		this.etat = false;
 		
 	}
@@ -57,7 +59,7 @@ public abstract class document {
 
 	/*les getters de class document */
 	
-	 protected String getId() {
+	 protected long getId() {
 		  return id;
 	 }
 	 
