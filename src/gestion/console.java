@@ -2,6 +2,7 @@ package gestion;
 import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class console {
   
@@ -36,7 +37,7 @@ public class console {
                     retournerDocument();
                     break;
                 case 4:
-                    bibliotheque.afficherDocuments();
+                     afficherMenu();
                     break;
                 case 5:
                     rechercherDocument();
@@ -48,48 +49,61 @@ public class console {
                     System.out.println("Choix invalide.");
             }
 
-
-
 			
 		}
 	
 	}
 
-	public void ajouterDocument(){
+	public void ajouterDocument() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("");
-		System.out.println("Type de document (livre/magazine) : ");
-		String type = scanner.nextLine();
-		
-        System.out.println("Titre : ");
-        String titre = scanner.nextLine();
-        System.out.println("Auteur : ");
-        String auteur = scanner.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println("Date de publication JJ/MM/AAAA: ");
-
-		String dateInput = scanner.nextLine();
-
-        LocalDate date = LocalDate.parse(dateInput, formatter);
+		System.out.println("Type de document (1-livre/2-magazine) : ");
+		int type = scanner.nextInt();
 	
-        
-        System.out.print("Nombre de pages : ");
-        
-		int nombreDePages = scanner.nextInt();	
+		if (type == 1 || type == 2) {
 
-		if(type.equals("livre")){
-			System.err.println("ISBN :");
-			String isbn = scanner.nextLine();
-			Livre livre =new Livre(titre, nombreDePages, date, isbn,auteur);
-			bibliotheque.ajouterDocument(livre);
-		}else if(type.equals("magazine")){
-			System.out.print("Numéro : ");
-            int numero = scanner.nextInt();
+			System.out.println("Titre : ");
+			String titre = scanner.nextLine();
 
-			Magazine magazine = new Magazine(titre, nombreDePages, date, numero);
-
-			bibliotheque.ajouterDocument(magazine);
+			System.out.println("Auteur : ");
+			String auteur = scanner.nextLine();
+	
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			LocalDate date = null;
+	
+			while (date == null) {
+				System.out.println("Date de publication (JJ/MM/AAAA) : ");
+				String dateInput = scanner.nextLine();
+	
+				try {
+					date = LocalDate.parse(dateInput, formatter);
+				} catch (DateTimeParseException e) {
+					System.out.println("Format de date invalide. Veuillez entrer une date au format JJ/MM/AAAA.");
+				}
+			}
+	
+			System.out.print("Nombre de pages : ");
+			int nombreDePages = scanner.nextInt();
+			scanner.nextLine();
+	
+			if (type == 1) {
+				System.out.println("ISBN :");
+				String isbn = scanner.nextLine();
+				Livre livre = new Livre(titre, nombreDePages, date, isbn, auteur);
+				bibliotheque.ajouterDocument(livre);
+			} else if (type == 2) {
+				System.out.print("Numéro : ");
+				int numero = scanner.nextInt();
+				scanner.nextLine(); 
+	
+				Magazine magazine = new Magazine(titre, nombreDePages, date, numero);
+				bibliotheque.ajouterDocument(magazine);
+			}
+		} else {
+			System.out.println("Type de document invalide. Veuillez entrer 'livre' ou 'magazine'.");
 		}
 	}
+	
 
 
 	private void emprunterDocument() {
@@ -111,5 +125,9 @@ public class console {
         String id = scanner.nextLine();
         bibliotheque.rechercherDocument(id);
     }
+
+	public void afficherDetailsDocument(){
+		bibliotheque.afficherDocuments();
+	}
 
 }

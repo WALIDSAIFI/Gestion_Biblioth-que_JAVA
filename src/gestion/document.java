@@ -73,46 +73,16 @@ public abstract class document {
 	 /* les Setters de class document*/
 	 
 	 protected void SetTitre(String titre) {
-		Scanner scanner = new Scanner(System.in);
-	
-		while (titre.isEmpty()) {
-			System.out.print("Veuillez entrer un titre valider !!!!: ");
-			titre = scanner.nextLine();
-	
-		}
 	
 		this.titre = titre;
 	}
 	 
 	 protected void SetnombreDePages(int nombre) {
-		Scanner scanner = new Scanner(System.in);
 
-		 while (nombre<0) {
-			if(nombre<=0){
-				System.out.print("Le nombre de pages doit être supérieur à 0. Veuillez essayer à nouveau : ");
-				nombre = scanner.nextInt();
-			}
-
-		 }
 		 this.nombreDePages = nombre;
 	 }
 
 	 protected void SetDatepublication(LocalDate Datepublication) {
-		Scanner scanner = new Scanner(System.in);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		boolean validDate = false;
-	
-		while (!validDate) {
-			System.out.print("Entrez la date de publication (jj/MM/aaaa) : ");
-			String input = scanner.nextLine();
-	
-			try {
-				Datepublication = LocalDate.parse(input, formatter);
-				validDate = true;  
-			} catch (DateTimeParseException e) {
-				System.out.println("Format de date invalide. Veuillez réessayer.");
-			}
-		}
 	
 		this.dateDePublication = Datepublication;
 	}

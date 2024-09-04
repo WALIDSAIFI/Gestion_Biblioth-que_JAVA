@@ -37,7 +37,9 @@ public class Bibliotheque {
     }
 
     public void afficherDocuments() {
-        documents.forEach(document::afficherDetails);
+        for (document Document : documents) {
+             Document.afficherDetails();  
+        }
     }
 
     public document rechercherDocument(String id) {
