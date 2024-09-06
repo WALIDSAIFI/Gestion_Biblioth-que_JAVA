@@ -1,4 +1,4 @@
-ystème de Gestion de Bibliothèque Municipale Description du Projet
+Système de Gestion de Bibliothèque Municipale Description du Projet
 
 Ce projet consiste à développer une application console en Java 8 pour une bibliothèque municipale. L'objectif est de gérer efficacement l'inventaire des livres et magazines ainsi que les emprunts et retours. Cette application suit une architecture en couches, permettant une séparation claire des responsabilités. Architecture du Projet Couche de Présentation
 
